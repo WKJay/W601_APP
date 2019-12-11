@@ -55,6 +55,11 @@ void smtp_thread(void *param)
 
     while (1)
     {
+        if (w601_smtp.cold_time)
+        {
+            w601_smtp.cold_time--;
+        }
+            
         if (w601_smtp.enable) //使能邮件功能
         {
             if (w601_aht10.cur_temp > w601_aht10.temp_warn) //有报警
@@ -62,7 +67,7 @@ void smtp_thread(void *param)
                 //冷却时间内不重复报警
                 if (w601_smtp.cold_time)
                 {
-                    w601_smtp.cold_time--;
+                    
                 }
                 else
                 {
