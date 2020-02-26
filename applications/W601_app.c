@@ -25,16 +25,8 @@ int w601_filesystem_init(void)
     }
     else
     {
-        //在 spi flash 中，名为 FS_PARTITION_NAME 的分区上创建一个块设备
-        flash_dev = fal_blk_device_create("filesystem");
-        //如果块设备创建失败则直接退出
-        if (flash_dev == NULL)
-        {
-            LOG_E("fal block device create fail");
-            return -1;
-        }
         //挂载 spi flash 中名为 "filesystem" 的分区
-        if (dfs_mount(flash_dev->parent.name, "/", "elm", 0, 0) < 0)
+        if (dfs_mount("filesystem", "/", "elm", 0, 0) < 0)
         {
             //若挂载失败则格式化块设备并重新挂载
             LOG_E("mount filesystem fail");
@@ -43,7 +35,6 @@ int w601_filesystem_init(void)
             rt_thread_mdelay(1000);
             return -1;
         }
-        mkdir("/webnet", 0x777);
         LOG_I("filesystem mount success");
     }
     return 0;

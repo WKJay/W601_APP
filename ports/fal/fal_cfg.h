@@ -30,9 +30,9 @@ extern struct fal_flash_dev w60x_onchip;
 {                                                                                                                 \
     {FAL_PART_MAGIC_WROD, "app",        "w60x_onchip",                                         0, 959 * 1024, 0}, \
     {FAL_PART_MAGIC_WROD, "easyflash",  FAL_NOR_FLASH_NAME,                                   0, 1024 * 1024, 0}, \
-    {FAL_PART_MAGIC_WROD, "download",   FAL_NOR_FLASH_NAME,                       (1024) * 1024, 1024 * 1024, 0}, \
-    {FAL_PART_MAGIC_WROD, "font",       FAL_NOR_FLASH_NAME,            (1024 + 1024) * 1024, 7 * 1024 * 1024, 0}, \
-    {FAL_PART_MAGIC_WROD, "filesystem", FAL_NOR_FLASH_NAME, (1024 + 1024 + 7 * 1024) * 1024, 7 * 1024 * 1024, 0}, \
+    {FAL_PART_MAGIC_WROD, "download",   FAL_NOR_FLASH_NAME,                         1024 * 1024, 1024 * 1024, 0}, \
+    {FAL_PART_MAGIC_WROD, "font",       FAL_NOR_FLASH_NAME,                   2*1024 * 1024, 7 * 1024 * 1024, 0}, \
+    {FAL_PART_MAGIC_WROD, "filesystem1", FAL_NOR_FLASH_NAME, (1024 + 1024 + 7 * 1024) * 1024, 7 * 1024 * 1024, 0}, \
 }
 #endif /* _FAL_CFG_H_ */
 #endif

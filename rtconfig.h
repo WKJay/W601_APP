@@ -111,6 +111,7 @@
 #define RTC_NTP_FIRST_SYNC_DELAY 1
 #define RTC_NTP_SYNC_PERIOD 3600
 #define RT_USING_SPI
+#define RT_USING_SPI_MSD
 #define RT_USING_SFUD
 #define RT_SFUD_USING_SFDP
 #define RT_SFUD_USING_FLASH_INFO_TABLE
@@ -309,7 +310,7 @@
 #define PKG_EASYFLASH_VER_NUM 0x30300
 #define PKG_USING_ADBD
 #define ADB_TR_TCPIP_ENABLE
-#define ADB_TR_STACK_SIZE 1280
+#define ADB_TR_STACK_SIZE 2048
 #define ADB_SERVICE_FILE_ENABLE
 #define ADB_FILESYNC_STACK_SIZE 2304
 #define ADB_FILESYNC_RECV_TIMEOUT 2000
@@ -351,8 +352,9 @@
 /* Onboard Peripheral Drivers */
 
 #define BSP_USING_AHT10
+#define BSP_USING_TF_CARD
 #define BSP_USING_FLASH
-#define SPI_FLASH_DEVICE_NAME "fl_spi"
+#define SPI_FLASH_DEVICE_NAME "norflash"
 #define SPI_FLASH_TYPE_NAME "w25q128"
 
 /* On-chip Peripheral Drivers */
