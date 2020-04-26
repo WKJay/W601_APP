@@ -239,7 +239,10 @@
 
 /* Select supported modules */
 
+#define WEBNET_USING_AUTH
 #define WEBNET_USING_CGI
+#define WEBNET_USING_UPLOAD
+#define WEBNET_USING_GZIP
 #define WEBNET_CACHE_LEVEL 1
 #define PKG_USING_WEBNET_LATEST_VERSION
 #define PKG_USING_CJSON
@@ -326,7 +329,8 @@
 #define PKG_USING_FAL
 #define FAL_DEBUG_CONFIG
 #define FAL_DEBUG 1
-#define FAL_PART_HAS_TABLE_CFG
+#define FAL_PART_TABLE_FLASH_DEV_NAME "w60x_onchip"
+#define FAL_PART_TABLE_END_OFFSET 65536
 #define PKG_USING_FAL_V00300
 #define PKG_FAL_VER_NUM 0x00300
 
@@ -335,6 +339,8 @@
 #define PKG_USING_SENSORS_DRIVERS
 #define PKG_USING_AHT10
 #define PKG_USING_AHT10_LATEST_VERSION
+#define PKG_USING_AP3216C
+#define PKG_USING_AP3216C_LATEST_VERSION
 
 /* miscellaneous packages */
 
@@ -356,6 +362,7 @@
 #define BSP_USING_FLASH
 #define SPI_FLASH_DEVICE_NAME "norflash"
 #define SPI_FLASH_TYPE_NAME "w25q128"
+#define BSP_USING_AP3216C
 
 /* On-chip Peripheral Drivers */
 
@@ -365,6 +372,7 @@
 #define BSP_USING_WIFI
 #define BSP_USING_SOFT_I2C
 #define BSP_USING_SOFT_I2C1
+#define BSP_USING_SOFT_I2C2
 #define BSP_USING_SPI
 #define WM_SPI_BUS_NAME "spi0"
 
@@ -374,7 +382,5 @@
 
 /* External Libraries */
 
-#define RT_USING_SMARTCONFIG_LIB
-#define RT_USING_SMARTCONFIG_DEMO
 
 #endif

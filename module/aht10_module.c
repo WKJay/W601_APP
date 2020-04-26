@@ -13,6 +13,7 @@
 #include "rtthread.h"
 #include "rtdevice.h"
 #include "aht10_module.h"
+#include "W601_app.h"
 #include "cJSON.h"
 #include "sensor_asair_aht10.h"
 
@@ -25,7 +26,7 @@
 
 static rt_device_t temp_dev, humi_dev;
 static struct rt_sensor_data temp_dev_data, humi_dev_data;
-w601_aht10_t w601_aht10;
+
 
 /**
  * Name:    aht10_device_init
@@ -38,9 +39,8 @@ w601_aht10_t w601_aht10;
 int aht10_device_init(void)
 {
     LOG_D("Temperature and Humidity Sensor initialize start...");
-    rt_thread_mdelay(2000);
 
-    rt_memset(&w601_aht10, 0, sizeof(w601_aht10_t));
+    rt_memset(&w601.aht10_data, 0, sizeof(w601_aht10_t));
     //获取温度设备句柄
     temp_dev = rt_device_find(TEMP_DEV);
     if (temp_dev == RT_NULL)
@@ -87,7 +87,9 @@ static float aht10_temp_get(void)
 {
     float temp_data = 0;
     //获取数据
+    rt_mutex_take(w601.mutex.sensor_mutex, 1200);
     rt_device_read(temp_dev, 0, &temp_dev_data, 1);
+    rt_mutex_release(w601.mutex.sensor_mutex);
     //组织数据
     temp_data = (int)(temp_dev_data.data.temp / 10) + ((float)(temp_dev_data.data.temp % 10) / 10);
 
@@ -103,8 +105,9 @@ static float aht10_temp_get(void)
 static float aht10_humi_get(void)
 {
     float humi_data = 0;
+    rt_mutex_take(w601.mutex.sensor_mutex, 1200);
     rt_device_read(humi_dev, 0, &humi_dev_data, 1);
-
+    rt_mutex_release(w601.mutex.sensor_mutex);
     //组织数据
     humi_data = (int)(humi_dev_data.data.humi / 10) + ((float)(humi_dev_data.data.humi % 10) / 10);
 
@@ -121,13 +124,11 @@ static void aht10_thread_entry(void *param)
 {
     int sec_count = 3600; //时间计数
     //aht10初始化
-    aht10_device_init();
 
     while (1)
     {
-        w601_aht10.cur_temp = aht10_temp_get();
-        w601_aht10.cur_humi = aht10_humi_get();
-
+        w601.aht10_data.cur_temp = aht10_temp_get() - 7.6;
+        w601.aht10_data.cur_humi = aht10_humi_get() - 7.6;
         //LOG_D("temp: %d.%d *C --- humi: %d.%d %%", (int)temp, (int)(temp * 10) % 10, (int)humi, (int)(humi * 10) % 10);
 
         //一个小时
@@ -136,31 +137,31 @@ static void aht10_thread_entry(void *param)
             sec_count = 1;
 
             //湿度
-            if (w601_aht10.cur_humi_index < 23)
+            if (w601.aht10_data.cur_humi_index < 23)
             {
-                w601_aht10.humi_data[w601_aht10.cur_humi_index++] = w601_aht10.cur_humi;
+                w601.aht10_data.humi_data[w601.aht10_data.cur_humi_index++] = w601.aht10_data.cur_humi;
             }
             else
             {
                 for (int i = 1; i <= 23; i++)
                 {
-                    w601_aht10.humi_data[i - 1] = w601_aht10.humi_data[i];
+                    w601.aht10_data.humi_data[i - 1] = w601.aht10_data.humi_data[i];
                 }
-                w601_aht10.humi_data[23] = w601_aht10.cur_humi;
+                w601.aht10_data.humi_data[23] = w601.aht10_data.cur_humi;
             }
 
             //温度
-            if (w601_aht10.cur_temp_index < 23)
+            if (w601.aht10_data.cur_temp_index < 23)
             {
-                w601_aht10.temp_data[w601_aht10.cur_temp_index++] = w601_aht10.cur_temp;
+                w601.aht10_data.temp_data[w601.aht10_data.cur_temp_index++] = w601.aht10_data.cur_temp;
             }
             else
             {
                 for (int i = 1; i <= 23; i++)
                 {
-                    w601_aht10.temp_data[i - 1] = w601_aht10.temp_data[i];
+                    w601.aht10_data.temp_data[i - 1] = w601.aht10_data.temp_data[i];
                 }
-                w601_aht10.temp_data[23] = w601_aht10.cur_temp;
+                w601.aht10_data.temp_data[23] = w601.aht10_data.cur_temp;
             }
         }
 
@@ -177,7 +178,7 @@ static void aht10_thread_entry(void *param)
 */
 w601_aht10_t *aht10_data_get(void)
 {
-    return &w601_aht10;
+    return &w601.aht10_data;
 }
 
 char *json_create_aht10_current_data(void)
@@ -185,11 +186,13 @@ char *json_create_aht10_current_data(void)
     char *json_data = RT_NULL;
     char value[10] = "";
     cJSON *root = cJSON_CreateObject();
-    snprintf(value, sizeof(value), "%.2f", w601_aht10.cur_temp);
+    snprintf(value, sizeof(value), "%.2f", w601.aht10_data.cur_temp);
     cJSON_AddItemToObject(root, "temp", cJSON_CreateString(value));
 
-    snprintf(value, sizeof(value), "%.2f", w601_aht10.cur_humi);
+    snprintf(value, sizeof(value), "%.2f", w601.aht10_data.cur_humi);
     cJSON_AddItemToObject(root, "humi", cJSON_CreateString(value));
+    cJSON_AddItemToObject(root, "used_mem", cJSON_CreateNumber(used_mem));
+    cJSON_AddItemToObject(root, "max_mem", cJSON_CreateNumber(mem_size_aligned));
     json_data = cJSON_PrintUnformatted(root);
     cJSON_Delete(root);
     return json_data;
@@ -206,15 +209,15 @@ char *json_create_aht10_saved_data(void)
     cJSON_AddItemToObject(root, "temp", temp);
     cJSON_AddItemToObject(root, "humi", humi);
 
-    for (int i = 0; i < w601_aht10.cur_humi_index; i++)
+    for (int i = 0; i < w601.aht10_data.cur_humi_index; i++)
     {
-        snprintf(value, sizeof(value), "%.2f", w601_aht10.humi_data[i]);
+        snprintf(value, sizeof(value), "%.2f", w601.aht10_data.humi_data[i]);
         cJSON_AddItemToObject(humi, "humi", cJSON_CreateString(value));
     }
 
-    for (int i = 0; i < w601_aht10.cur_temp_index; i++)
+    for (int i = 0; i < w601.aht10_data.cur_temp_index; i++)
     {
-        snprintf(value, sizeof(value), "%.2f", w601_aht10.temp_data[i]);
+        snprintf(value, sizeof(value), "%.2f", w601.aht10_data.temp_data[i]);
         cJSON_AddItemToObject(temp, "temp", cJSON_CreateString(value));
     }
     json_data = cJSON_PrintUnformatted(root);
@@ -230,6 +233,7 @@ char *json_create_aht10_saved_data(void)
 int aht10_module_init(void)
 {
     rt_thread_t aht10_tid = RT_NULL;
+    aht10_device_init();
     aht10_tid = rt_thread_create("aht10_t", aht10_thread_entry,
                                  NULL, 1024, 15, 5);
     if (!aht10_tid)

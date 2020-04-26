@@ -2,6 +2,7 @@
 #include "wifi_module.h"
 #include "smtp_client.h"
 #include "aht10_module.h"
+#include "w601_app.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -43,7 +44,8 @@ char content[1024] = "";
 //准备邮件内容
 static void prepare_content(void)
 {
-    sprintf(content, "W601监测系统报警\r\n-------------------------\r\n当前温度：%.2f C\r\n当前湿度：%.2f%% \r\n",w601_aht10.cur_temp, w601_aht10.cur_humi);
+    sprintf(content, "W601监测系统报警\r\n-------------------------\r\n当前温度：%.2f C\r\n当前湿度：%.2f%% \r\n",
+                                    w601.aht10_data.cur_temp,w601.aht10_data.cur_humi);
 }
 
 void smtp_thread(void *param)
@@ -62,7 +64,7 @@ void smtp_thread(void *param)
             
         if (w601_smtp.enable) //使能邮件功能
         {
-            if (w601_aht10.cur_temp > w601_aht10.temp_warn) //有报警
+            if (w601.aht10_data.cur_temp > w601.aht10_data.temp_warn) //有报警
             {
                 //冷却时间内不重复报警
                 if (w601_smtp.cold_time)
@@ -104,7 +106,7 @@ int smtp_data_config(char *server_addr, char *server_port,
     smtp_set_auth(w601_smtp.username, w601_smtp.password);
     smtp_add_receiver(receiver);
 
-    w601_aht10.temp_warn = atof(temp_warn);
+    w601.aht10_data.temp_warn = atof(temp_warn);
 
     return 0;
 }
@@ -124,7 +126,7 @@ char *json_create_smtp_data(void)
     char *json_data = RT_NULL;
     char value[10] = "";
     cJSON *root = cJSON_CreateObject();
-    snprintf(value, sizeof(value), "%.2f", w601_aht10.temp_warn);
+    snprintf(value, sizeof(value), "%.2f", w601.aht10_data.temp_warn);
 
     cJSON_AddItemToObject(root, "server_addr", cJSON_CreateString(w601_smtp.server_addr));
     cJSON_AddItemToObject(root, "server_port", cJSON_CreateString(w601_smtp.server_port));

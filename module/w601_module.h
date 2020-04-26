@@ -6,5 +6,7 @@
 #include "web_module.h"
 #include "board_module.h"
 #include "smtp_module.h"
+#include "ap3216c_module.h"
+#include "record_module.h"
 
 #endif

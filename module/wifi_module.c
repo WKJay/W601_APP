@@ -8,8 +8,8 @@
 #define DBG_LVL DBG_LOG
 #include <rtdbg.h>
 
-#define WLAN_SSID "人才"
-#define WLAN_PASSWORD "qwertyuiop"
+#define WLAN_SSID "418"
+#define WLAN_PASSWORD "13861880611"
 
 static uint8_t wifi_ready_status = 0;//wifi连接状态
 

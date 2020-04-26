@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>ARMCM3</Device>
           <Vendor>ARM</Vendor>
-          <PackID>ARM.CMSIS.5.5.1</PackID>
+          <PackID>ARM.CMSIS.5.6.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00020000) IROM(0x00000000,0x00040000) CPUTYPE("Cortex-M3") CLOCK(12000000) ESEL ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -184,6 +184,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -337,7 +338,7 @@
               <MiscControls>--c99 --gnu</MiscControls>
               <Define>RT_USING_ARM_LIBC, WM_W600</Define>
               <Undefine></Undefine>
-              <IncludePath>.;..\..\rt-thread\include;.;applications;.;module;packages\adbd-latest\inc;packages\adbd-latest\services;packages\aht10-latest;packages\cJSON-latest;packages\EasyFlash-v3.3.0\inc;ports\easyflash;packages\fal-v0.3.0\inc;ports\fal;packages\mbedtls-v2.7.10\mbedtls\include;packages\mbedtls-v2.7.10\ports\inc;packages\netutils\ntp;packages\smtp_client-latest\inc;packages\tinycrypt-v1.0.0\include;packages\webnet-latest\inc;ports\sensor;..\..\drivers;ports\wifi;..\..\rt-thread\libcpu\arm\common;..\..\rt-thread\libcpu\arm\cortex-m3;..\..\rt-thread\components\dfs\include;..\..\rt-thread\components\dfs\filesystems\devfs;..\..\rt-thread\components\dfs\filesystems\elmfat;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\spi;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\spi\sfud\inc;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\wlan;..\..\rt-thread\components\drivers\sensors;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\finsh;..\..\rt-thread\components\libc\compilers\armlibc;..\..\rt-thread\components\libc\compilers\common;..\..\rt-thread\components\net\lwip-2.0.2\src;..\..\rt-thread\components\net\lwip-2.0.2\src\include;..\..\rt-thread\components\net\lwip-2.0.2\src\include\ipv4;..\..\rt-thread\components\net\lwip-2.0.2\src\arch\include;..\..\rt-thread\components\net\lwip-2.0.2\src\include\netif;..\..\rt-thread\components\net\lwip_dhcpd;..\..\rt-thread\components\net\netdev\include;..\..\rt-thread\components\net\sal_socket\include;..\..\rt-thread\components\net\sal_socket\include\socket;..\..\rt-thread\components\net\sal_socket\impl;..\..\rt-thread\components\net\sal_socket\include\dfs_net;..\..\rt-thread\components\net\sal_socket\include\dfs_net\sys_select;..\..\rt-thread\components\net\sal_socket\include\socket\sys_socket;..\..\libraries\smartconfig\inc;..\..\libraries\WM_Libraries;..\..\libraries\WM_Libraries\Include;..\..\libraries\WM_Libraries\Include\Driver;..\..\libraries\WM_Libraries\Platform\Drivers\spi;..\..\libraries\WM_Libraries\Include\OS;..\..\libraries\WM_Libraries\Include\Platform;..\..\libraries\WM_Libraries\Include\OS;..\..\libraries\WM_Libraries\Include\WiFi;..\..\libraries\WM_Libraries\Platform\Inc;..\..\libraries\WM_Libraries\Platform\Common\Params;..\..\libraries\WM_Libraries\Platform\Common\crypto;..\..\libraries\WM_Libraries\Platform\Common\crypto\digest;..\..\libraries\WM_Libraries\Platform\Common\crypto\math;..\..\libraries\WM_Libraries\Platform\Common\crypto\symmetric;..\..\libraries\WM_Libraries\Platform\Boot\gcc</IncludePath>
+              <IncludePath>.;..\..\rt-thread\include;.;applications;.;module;packages\adbd-latest\inc;packages\adbd-latest\services;packages\aht10-latest;packages\ap3216c-latest;packages\cJSON-latest;packages\EasyFlash-v3.3.0\inc;ports\easyflash;packages\fal-v0.3.0\inc;ports\fal;packages\mbedtls-v2.7.10\mbedtls\include;packages\mbedtls-v2.7.10\ports\inc;packages\netutils\ntp;packages\smtp_client-latest\inc;packages\tinycrypt-v1.0.0\include;packages\webnet-latest\inc;ports\sensor;..\..\drivers;ports\wifi;..\..\rt-thread\libcpu\arm\common;..\..\rt-thread\libcpu\arm\cortex-m3;..\..\rt-thread\components\dfs\include;..\..\rt-thread\components\dfs\filesystems\devfs;..\..\rt-thread\components\dfs\filesystems\elmfat;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\spi;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\spi\sfud\inc;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\drivers\wlan;..\..\rt-thread\components\drivers\sensors;..\..\rt-thread\components\drivers\include;..\..\rt-thread\components\finsh;..\..\rt-thread\components\libc\compilers\armlibc;..\..\rt-thread\components\libc\compilers\common;..\..\rt-thread\components\net\lwip-2.0.2\src;..\..\rt-thread\components\net\lwip-2.0.2\src\include;..\..\rt-thread\components\net\lwip-2.0.2\src\include\ipv4;..\..\rt-thread\components\net\lwip-2.0.2\src\arch\include;..\..\rt-thread\components\net\lwip-2.0.2\src\include\netif;..\..\rt-thread\components\net\lwip_dhcpd;..\..\rt-thread\components\net\netdev\include;..\..\rt-thread\components\net\sal_socket\include;..\..\rt-thread\components\net\sal_socket\include\socket;..\..\rt-thread\components\net\sal_socket\impl;..\..\rt-thread\components\net\sal_socket\include\dfs_net;..\..\rt-thread\components\net\sal_socket\include\dfs_net\sys_select;..\..\rt-thread\components\net\sal_socket\include\socket\sys_socket;..\..\libraries\WM_Libraries;..\..\libraries\WM_Libraries\Include;..\..\libraries\WM_Libraries\Include\Driver;..\..\libraries\WM_Libraries\Platform\Drivers\spi;..\..\libraries\WM_Libraries\Include\OS;..\..\libraries\WM_Libraries\Include\Platform;..\..\libraries\WM_Libraries\Include\OS;..\..\libraries\WM_Libraries\Include\WiFi;..\..\libraries\WM_Libraries\Platform\Inc;..\..\libraries\WM_Libraries\Platform\Common\Params;..\..\libraries\WM_Libraries\Platform\Common\crypto;..\..\libraries\WM_Libraries\Platform\Common\crypto\digest;..\..\libraries\WM_Libraries\Platform\Common\crypto\math;..\..\libraries\WM_Libraries\Platform\Common\crypto\symmetric;..\..\libraries\WM_Libraries\Platform\Boot\gcc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -482,9 +483,24 @@
               <FilePath>module\aht10_module.c</FilePath>
             </File>
             <File>
+              <FileName>ap3216c_module.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\ap3216c_module.c</FilePath>
+            </File>
+            <File>
               <FileName>board_module.c</FileName>
               <FileType>1</FileType>
               <FilePath>module\board_module.c</FilePath>
+            </File>
+            <File>
+              <FileName>json_create.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\json_create.c</FilePath>
+            </File>
+            <File>
+              <FileName>record_module.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\record_module.c</FilePath>
             </File>
             <File>
               <FileName>smtp_module.c</FileName>
@@ -500,6 +516,11 @@
               <FileName>wifi_module.c</FileName>
               <FileType>1</FileType>
               <FilePath>module\wifi_module.c</FilePath>
+            </File>
+            <File>
+              <FileName>wn_firm_upload.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\wn_firm_upload.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -575,6 +596,21 @@
               <FileName>sensor_asair_aht10.c</FileName>
               <FileType>1</FileType>
               <FilePath>packages\aht10-latest\sensor_asair_aht10.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ap3216c</GroupName>
+          <Files>
+            <File>
+              <FileName>ap3216c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ap3216c-latest\ap3216c.c</FilePath>
+            </File>
+            <File>
+              <FileName>sensor_lsc_ap3216c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\ap3216c-latest\sensor_lsc_ap3216c.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1266,9 +1302,19 @@
               <FilePath>packages\webnet-latest\src\wn_module.c</FilePath>
             </File>
             <File>
+              <FileName>wn_module_auth.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\webnet-latest\module\wn_module_auth.c</FilePath>
+            </File>
+            <File>
               <FileName>wn_module_cgi.c</FileName>
               <FileType>1</FileType>
               <FilePath>packages\webnet-latest\module\wn_module_cgi.c</FilePath>
+            </File>
+            <File>
+              <FileName>wn_module_upload.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\webnet-latest\module\wn_module_upload.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1968,26 +2014,6 @@
               <FileName>dfs_net.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\rt-thread\components\net\sal_socket\dfs_net\dfs_net.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>smartconfig</GroupName>
-          <Files>
-            <File>
-              <FileName>smartconfig_demo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\libraries\smartconfig\smartconfig_demo.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>smartconfig</GroupName>
-          <Files>
-            <File>
-              <FileName>libsmartconfig_keil.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\libraries\smartconfig\libs\libsmartconfig_keil.lib</FilePath>
             </File>
           </Files>
         </Group>
