@@ -21,11 +21,27 @@ Modify:
 
 #define DATA_RECORD_ROOT_PATH "/webnet/data"
 #define DATA_RECORD_HEAD "time,temp,humi,used_mem,light\r\n"
+#define DATA_FILTER_TIMES 60
+#define DATA_RECORD_INTERVAL 1000 * 60 * 10   //10min
+
+typedef struct _reacord_data
+{
+    float temp_sum;
+    float humi_sum;
+    float light_sum;
+    uint16_t used_mem_sum;
+    float temp_aver;
+    float humi_aver;
+    float light_aver;
+    uint16_t used_mem_aver;
+} record_data_t;
+
 typedef struct _record
 {
     rt_mutex_t file_mutex;
-    struct tm *cur_tm;
+    struct tm cur_tm;
     char path[100];
+    record_data_t data;
 } record_t;
 
 record_t record;
@@ -76,8 +92,8 @@ static int dir_change(void)
     DIR *dir = NULL;
     time_t cur_time = time(NULL);
     struct tm *local_time = localtime(&cur_time);
-    //月份变化说明要更换目录
-    if (local_time->tm_mon != record.cur_tm->tm_mon)
+    //日期变化说明要更换目录
+    if (local_time->tm_mday != record.cur_tm.tm_mday)
     {
         memset(record.path, 0, sizeof(record.path));
         //年份目录
@@ -104,8 +120,8 @@ static int dir_change(void)
         {
             closedir(dir);
         }
-
-        record.cur_tm = local_time;
+        
+        memcpy(&record.cur_tm,local_time,sizeof(struct tm));
         return 1;
     }
     else
@@ -123,7 +139,7 @@ static int data_record(void)
     //只有当目录变更时才重新组织目录
     if (dir_change() == 1)
     {
-        sprintf(record.path, "%s/%d.csv", record.path, record.cur_tm->tm_mday);
+        sprintf(record.path, "%s/%d.csv", record.path, record.cur_tm.tm_mday);
     }
     cur_time = time(NULL);
     fd = open(record.path, O_RDONLY);
@@ -153,14 +169,14 @@ static int data_record(void)
     memset(record_data, 0, sizeof(record_data));
     //时间戳-温度-湿度-内存-光照
     snprintf(record_data, sizeof(record_data), "%d,%.2f,%.2f,%d,%.2f\r\n", cur_time,
-             w601.aht10_data.cur_temp,
-             w601.aht10_data.cur_humi,
-             (int)used_mem,
-             w601.ap3216c_data.cur_light);
+             record.data.temp_aver,
+             record.data.humi_aver,
+             record.data.used_mem_aver,
+             record.data.light_aver);
 
     write(fd, record_data, strlen(record_data));
     close(fd);
-    LOG_D("Record: %s", record_data);
+    //LOG_D("Record: %s", record_data);
     return 0;
 }
 
@@ -169,10 +185,26 @@ static void record_thread_entry(void *param)
 
     while (1)
     {
+        record.data.humi_sum = 0;
+        record.data.light_sum = 0;
+        record.data.temp_sum = 0;
+        record.data.used_mem_sum = 0;
+        for (int i = 0; i < DATA_FILTER_TIMES; i++)
+        {
+            record.data.humi_sum += w601.aht10_data.cur_humi;
+            record.data.temp_sum += w601.aht10_data.cur_temp;
+            record.data.light_sum += w601.ap3216c_data.cur_light;
+            record.data.used_mem_sum += used_mem;
+            rt_thread_mdelay(DATA_RECORD_INTERVAL / DATA_FILTER_TIMES);
+        }
+        record.data.humi_aver = record.data.humi_sum / DATA_FILTER_TIMES;
+        record.data.temp_aver = record.data.temp_sum / DATA_FILTER_TIMES;
+        record.data.light_aver = record.data.light_sum / DATA_FILTER_TIMES;
+        record.data.used_mem_aver = record.data.used_mem_sum / DATA_FILTER_TIMES;
+
         rt_mutex_take(record.file_mutex, 6000);
         data_record();
         rt_mutex_release(record.file_mutex);
-        rt_thread_mdelay(1000 * 60 * 5); //5min
     }
 }
 
