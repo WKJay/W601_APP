@@ -78,6 +78,7 @@ char *json_create_info(void)
     cJSON_AddItemToObject(root, "temp", cJSON_CreateString(data_str));
     snprintf(data_str, sizeof(data_str), "%.2f", w601.ap3216c_data.cur_light);
     cJSON_AddItemToObject(root, "light", cJSON_CreateString(data_str));
+    cJSON_AddItemToObject(root, "ts", cJSON_CreateNumber((unsigned int)time(NULL)));
 
     json_data = cJSON_PrintUnformatted(root);
     if (root)
