@@ -9,9 +9,9 @@ set out_path=.\Bin
 @rem Setting the bin file path
 set bin_file=.\rtthread.bin
 @rem Setting winnermicro libraries path
-set wmlib_path=..\..\libraries\WM_Libraries
+set wmlib_path=.\libraries\WM_Libraries
 @rem Setting tools path
-set tools_path=..\..\tools
+set tools_path=.\tools
 
 @rem Enter project folder
 CD .

@@ -182,9 +182,11 @@ static int data_record(void)
 
 static void record_thread_entry(void *param)
 {
-
+    uint32_t used_mem, max_mem, total_mem;
     while (1)
     {
+        rt_memory_info(&total_mem, &used_mem, &max_mem);
+        
         record.data.humi_sum = 0;
         record.data.light_sum = 0;
         record.data.temp_sum = 0;

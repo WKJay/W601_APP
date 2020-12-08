@@ -65,12 +65,15 @@ char *json_create_info(void)
     cJSON *root = NULL;
     root = cJSON_CreateObject();
     char data_str[10];
+    uint32_t used_mem, max_mem, total_mem;
+
     if (root == NULL)
     {
         LOG_E("create web response json object error!");
         return 0;
     }
-
+    
+    rt_memory_info(&total_mem, &used_mem, &max_mem);
     cJSON_AddItemToObject(root, "used_mem", cJSON_CreateNumber(used_mem));
     snprintf(data_str, sizeof(data_str), "%.2f", w601.aht10_data.cur_humi);
     cJSON_AddItemToObject(root, "humi", cJSON_CreateString(data_str));

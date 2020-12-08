@@ -261,6 +261,7 @@
 #define NETUTILS_NTP_HOSTNAME "cn.pool.ntp.org"
 #define NETUTILS_NTP_HOSTNAME2 "ntp.rt-thread.org"
 #define NETUTILS_NTP_HOSTNAME3 "edu.ntp.org.cn"
+#define PKG_NETUTILS_TELNET
 #define PKG_USING_NETUTILS_V110
 
 /* IoT Cloud */
@@ -271,6 +272,7 @@
 
 /* smtp_client Options */
 
+#define SMTP_CLIENT_USING_ATTACHMENT
 
 /* security packages */
 
@@ -334,6 +336,9 @@
 #define PKG_USING_FAL_V00300
 #define PKG_FAL_VER_NUM 0x00300
 
+/* Micrium: Micrium software products porting for RT-Thread */
+
+
 /* peripheral libraries and drivers */
 
 #define PKG_USING_SENSORS_DRIVERS
@@ -346,6 +351,9 @@
 
 
 /* samples: kernel and components samples */
+
+
+/* games: games run on RT-Thread console */
 
 
 /* W60x Device config */

@@ -10,6 +10,8 @@ w601_t w601;
 #define DBG_SECTION_NAME "W601_APP"
 #include "w601_debug.h"
 
+extern void telnet_server();
+
 /**
 * Name:    w601_mutex_init
 * Brief:   信号量初始化
@@ -107,6 +109,7 @@ void w601_app_init(void)
     led_module_init();
     smtp_module_init();
     ap3216c_module_init();
+    telnet_server();
     
     rt_thread_mdelay(10000);
     record_module_init();

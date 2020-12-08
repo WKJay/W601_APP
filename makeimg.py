@@ -16,9 +16,9 @@ out_path='./Bin'
 # Setting the bin file path
 bin_file='./rtthread.bin'
 # Setting winnermicro libraries path
-wmlib_path='../../libraries/WM_Libraries'
+wmlib_path='./libraries/WM_Libraries'
 # Setting tools path
-tools_path='../../tools'
+tools_path='./tools'
 
 def execute_command(cmdstring, cwd=None, shell=True):
     """Execute the system command at the specified address."""
