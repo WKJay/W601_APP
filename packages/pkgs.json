@@ -1,0 +1,57 @@
+[
+ {
+  "path": "/packages/iot/webnet", 
+  "ver": "latest", 
+  "name": "WEBNET"
+ }, 
+ {
+  "path": "/packages/iot/cJSON", 
+  "ver": "latest", 
+  "name": "CJSON"
+ }, 
+ {
+  "path": "/packages/iot/netutils", 
+  "ver": "v1.1.0", 
+  "name": "NETUTILS"
+ }, 
+ {
+  "path": "/packages/iot/smtp_client", 
+  "ver": "latest", 
+  "name": "SMTP_CLIENT"
+ }, 
+ {
+  "path": "/packages/security/mbedtls", 
+  "ver": "v2.7.10", 
+  "name": "MBEDTLS"
+ }, 
+ {
+  "path": "/packages/security/tinycrypt", 
+  "ver": "v1.0.0", 
+  "name": "TINYCRYPT"
+ }, 
+ {
+  "path": "/packages/tools/EasyFlash", 
+  "ver": "v3.3.0", 
+  "name": "EASYFLASH"
+ }, 
+ {
+  "path": "/packages/tools/adbd", 
+  "ver": "latest", 
+  "name": "ADBD"
+ }, 
+ {
+  "path": "/packages/system/fal", 
+  "ver": "v0.3.0", 
+  "name": "FAL"
+ }, 
+ {
+  "path": "/packages/peripherals/sensors/aht10", 
+  "ver": "latest", 
+  "name": "AHT10"
+ }, 
+ {
+  "path": "/packages/peripherals/sensors/ap3216c", 
+  "ver": "latest", 
+  "name": "AP3216C"
+ }
+]
