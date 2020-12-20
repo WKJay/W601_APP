@@ -4,9 +4,9 @@
 #include "wifi_config.h"
 #include <msh.h>
 
-#define DBG_TAG "wifi"
-#define DBG_LVL DBG_LOG
-#include <rtdbg.h>
+#define LOG_TAG "wifi"
+#define LOG_LVL LOG_LVL_INFO
+#include <ulog.h>
 
 #define WLAN_SSID "418"
 #define WLAN_PASSWORD "13861880611"

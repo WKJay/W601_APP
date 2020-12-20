@@ -15,9 +15,9 @@ Modify:
 #include <time.h>
 #include "W601_app.h"
 
-#define DBG_TAG "record"
-#define DBG_LVL DBG_LOG
-#include <rtdbg.h>
+#define LOG_TAG "record"
+#define LOG_LVL LOG_LVL_INFO
+#include <ulog.h>
 
 #define DATA_RECORD_ROOT_PATH "/webnet/data"
 #define DATA_RECORD_HEAD "time,temp,humi,used_mem,light\r\n"

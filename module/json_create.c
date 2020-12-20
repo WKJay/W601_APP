@@ -13,9 +13,9 @@ Modify:
 #include "W601_app.h"
 #include "cJSON.h"
 
-#define DBG_TAG "json"
-#define DBG_LVL DBG_LOG
-#include <rtdbg.h>
+#define LOG_TAG "json"
+#define LOG_LVL LOG_LVL_INFO
+#include <ulog.h>
 
 /**
  * Name:    json_create_web_response

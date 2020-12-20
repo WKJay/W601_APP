@@ -2,9 +2,10 @@
 #include <rtdevice.h>
 #include "W601_app.h"
 #include "sensor_lsc_ap3216c.h"
-#define DBG_TAG "ap3216c"
-#define DBG_LVL DBG_LOG
-#include <rtdbg.h>
+
+#define LOG_TAG "ap3216c"
+#define LOG_LVL LOG_LVL_INFO
+#include <ulog.h>
 
 #define ALS_DEV "li_ap321"
 #define PS_DEV "pr_ap321"

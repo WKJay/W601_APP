@@ -15,9 +15,9 @@
 #define SMTP_CLIENT_THREAD_STACK_SIZE 2048
 #endif
 
-#define DBG_TAG "smtp"
-#define DBG_LVL DBG_LOG
-#include <rtdbg.h>
+#define LOG_TAG "smtp"
+#define LOG_LVL LOG_LVL_INFO
+#include <ulog.h>
 
 //报警冷却时间（单位：s）
 #define WARNING_COLD_TIME 300

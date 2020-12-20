@@ -1,0 +1,9 @@
+#ifndef __ULOG_CFG_H
+#define __ULOG_CFG_H
+
+#define ULOG_TCP_CONN_RETRY_TIMEOUT 1000 * 10
+
+#define ULOG_TCP_SELECT_TIMEOUT   1000
+#define ULOG_TCP_MAX_SERVER_COUNT 3
+#define ULOG_TCP_MUTEX_TIMEOUT    5000
+#endif /* __ULOG_CFG_H */

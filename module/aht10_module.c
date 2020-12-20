@@ -17,9 +17,9 @@
 #include "cJSON.h"
 #include "sensor_asair_aht10.h"
 
-#define DBG_TAG "aht10"
-#define DBG_LVL DBG_LOG
-#include <rtdbg.h>
+#define LOG_TAG "aht10"
+#define LOG_LVL LOG_LVL_INFO
+#include <ulog.h>
 
 #define TEMP_DEV "temp_aht"
 #define HUMI_DEV "humi_aht"
