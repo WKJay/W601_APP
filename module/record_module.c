@@ -53,7 +53,7 @@ static int check_time_valid(void)
     {
         time_t cur_time = time(NULL);
         struct tm *local_time = localtime(&cur_time);
-        if (local_time->tm_yday > 100)
+        if (local_time->tm_year > 100)
         {
             LOG_D("time validated: %s", ctime(&cur_time));
             break;
