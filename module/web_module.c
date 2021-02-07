@@ -7,7 +7,7 @@ History:
 1. Version:    V1.0.0
 Date:      2019-12-08
 Author:    WKJay
-Modify:    
+Modify:
 *************************************************/
 #include "webnet.h"
 #include "aht10_module.h"
@@ -15,6 +15,7 @@ Modify:
 #include "board_module.h"
 #include "json_module.h"
 #include "pin_config.h"
+#include "wol.h"
 #include <rtdevice.h>
 #include <wn_module.h>
 #include <wn_utils.h>
@@ -30,8 +31,7 @@ extern const struct webnet_module_upload_entry upload_bin_upload;
     session->request->result_code = 200; \
     webnet_session_set_header(session, mimetype, 200, "Ok", -1);
 
-void cgi_get_aht10_data(struct webnet_session *session)
-{
+void cgi_get_aht10_data(struct webnet_session *session) {
     cgi_head();
     request = request;
     body = json_create_aht10_current_data();
@@ -40,8 +40,7 @@ void cgi_get_aht10_data(struct webnet_session *session)
     rt_free(body);
 }
 
-void cgi_get_info(struct webnet_session *session)
-{
+void cgi_get_info(struct webnet_session *session) {
     cgi_head();
     request = request;
     body = json_create_info();
@@ -50,8 +49,7 @@ void cgi_get_info(struct webnet_session *session)
     rt_free(body);
 }
 
-void cgi_get_aht10_saved_data(struct webnet_session *session)
-{
+void cgi_get_aht10_saved_data(struct webnet_session *session) {
     cgi_head();
     request = request;
     body = json_create_aht10_saved_data();
@@ -59,44 +57,29 @@ void cgi_get_aht10_saved_data(struct webnet_session *session)
     rt_free(body);
 }
 
-void cgi_led_toggle(struct webnet_session *session)
-{
+void cgi_led_toggle(struct webnet_session *session) {
     cgi_head();
     body = body;
     const char *response = "{\"code\":0}";
     const char *id = webnet_request_get_query(request, "id");
     const char *status = webnet_request_get_query(request, "status");
 
-    if (strcmp(id, "red") == 0)
-    {
-        if (strcmp(status, "OFF") == 0)
-        {
+    if (strcmp(id, "red") == 0) {
+        if (strcmp(status, "OFF") == 0) {
             led_write(RED, LED_ON);
-        }
-        else
-        {
+        } else {
             led_write(RED, LED_OFF);
         }
-    }
-    else if (strcmp(id, "green") == 0)
-    {
-        if (strcmp(status, "OFF") == 0)
-        {
+    } else if (strcmp(id, "green") == 0) {
+        if (strcmp(status, "OFF") == 0) {
             led_write(GREEN, LED_ON);
-        }
-        else
-        {
+        } else {
             led_write(GREEN, LED_OFF);
         }
-    }
-    else if (strcmp(id, "blue") == 0)
-    {
-        if (strcmp(status, "OFF") == 0)
-        {
+    } else if (strcmp(id, "blue") == 0) {
+        if (strcmp(status, "OFF") == 0) {
             led_write(BLUE, LED_ON);
-        }
-        else
-        {
+        } else {
             led_write(BLUE, LED_OFF);
         }
     }
@@ -104,8 +87,7 @@ void cgi_led_toggle(struct webnet_session *session)
     webnet_session_printf(session, response);
 }
 
-void cgi_get_device_status(struct webnet_session *session)
-{
+void cgi_get_device_status(struct webnet_session *session) {
     cgi_head();
     request = request;
     body = json_create_device_status();
@@ -113,8 +95,7 @@ void cgi_get_device_status(struct webnet_session *session)
     rt_free(body);
 }
 
-void cgi_smtp_disable(struct webnet_session *session)
-{
+void cgi_smtp_disable(struct webnet_session *session) {
     cgi_head();
     request = request;
     body = body;
@@ -123,8 +104,7 @@ void cgi_smtp_disable(struct webnet_session *session)
     webnet_session_printf(session, response);
 }
 
-void cgi_smtp_enable(struct webnet_session *session)
-{
+void cgi_smtp_enable(struct webnet_session *session) {
     cgi_head();
     request = request;
     body = body;
@@ -133,8 +113,7 @@ void cgi_smtp_enable(struct webnet_session *session)
     webnet_session_printf(session, response);
 }
 
-void cgi_smtp_save(struct webnet_session *session)
-{
+void cgi_smtp_save(struct webnet_session *session) {
     cgi_head();
     body = body;
     const char *response = "{\"code\":0}";
@@ -144,13 +123,13 @@ void cgi_smtp_save(struct webnet_session *session)
     const char *password = webnet_request_get_query(request, "password");
     const char *receiver = webnet_request_get_query(request, "receiver");
     const char *temp_warn = webnet_request_get_query(request, "temp_warn");
-    smtp_data_config((char *)server_addr, (char *)server_port, (char *)username, (char *)password, (char *)receiver, (char *)temp_warn);
+    smtp_data_config((char *)server_addr, (char *)server_port, (char *)username,
+                     (char *)password, (char *)receiver, (char *)temp_warn);
     smtp_enable();
     webnet_session_printf(session, response);
 }
 
-void cgi_smtp_get_data(struct webnet_session *session)
-{
+void cgi_smtp_get_data(struct webnet_session *session) {
     cgi_head();
     request = request;
     body = json_create_smtp_data();
@@ -158,14 +137,26 @@ void cgi_smtp_get_data(struct webnet_session *session)
     rt_free(body);
 }
 
+void cgi_wol(struct webnet_session *session) {
+    cgi_head();
+    char *success = "{\"code\":0}";
+    char *error = "{\"code\":-1}";
+    const char *value = webnet_request_get_query(request, "value");
+    if (wol_process(value) == 0) {
+        body = success;
+    } else {
+        body = error;
+    }
+    webnet_session_printf(session, body);
+}
+
 /**
-* Name:    web_module_init
-* Brief:   网页模块初始化
-* Input:   None
-* Return:  Success: 0   Fail: -1
-*/
-int web_module_init(void)
-{
+ * Name:    web_module_init
+ * Brief:   网页模块初始化
+ * Input:   None
+ * Return:  Success: 0   Fail: -1
+ */
+int web_module_init(void) {
     webnet_upload_add(&upload_bin_upload);
 
     webnet_cgi_register("smtp_save", cgi_smtp_save);
@@ -177,5 +168,6 @@ int web_module_init(void)
     webnet_cgi_register("get_aht_data", cgi_get_aht10_data);
     webnet_cgi_register("led_toggle", cgi_led_toggle);
     webnet_cgi_register("get_aht_saved_data", cgi_get_aht10_saved_data);
+    webnet_cgi_register("mystery", cgi_wol);
     return webnet_init();
 }

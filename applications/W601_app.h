@@ -4,7 +4,7 @@
 #include "sensor.h"
 #include "w601_module.h"
 
-#define SOFTWARE_VERSION "W601V1.1"
+#define SOFTWARE_VERSION "W601V1.2"
 extern rt_size_t used_mem, max_mem, mem_size_aligned;
 
 typedef struct _w601_mutex

@@ -54,7 +54,7 @@
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
-          <BrowseInformation>0</BrowseInformation>
+          <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\build\keil\List\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
@@ -136,7 +136,7 @@
             <Capability>1</Capability>
             <DriverSelection>4100</DriverSelection>
           </Flash1>
-          <bUseTDR>0</bUseTDR>
+          <bUseTDR>1</bUseTDR>
           <Flash2>Segger\JL2CM3.dll</Flash2>
           <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
@@ -832,6 +832,11 @@
               <FileName>wn_firm_upload.c</FileName>
               <FileType>1</FileType>
               <FilePath>module\wn_firm_upload.c</FilePath>
+            </File>
+            <File>
+              <FileName>wol.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\module\wol.c</FilePath>
             </File>
           </Files>
         </Group>

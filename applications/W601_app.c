@@ -9,8 +9,7 @@ w601_t w601;
 //调试选项
 #define DBG_SECTION_NAME "W601_APP"
 #include "w601_debug.h"
-
-extern void telnet_server();
+void telnet_server(void);
 
 /**
 * Name:    w601_mutex_init
@@ -74,15 +73,15 @@ int w601_filesystem_init(void)
 
 static void log_software_version(void)
 {
-    printf("\r\n");
     rt_thread_mdelay(100);
-    LOG_D("*************************************************");
+    rt_kprintf("\r\n");
+    rt_kprintf("*************************************************\r\n");
     rt_thread_mdelay(100);
-    LOG_D("system running ...");
+    rt_kprintf("system running ...\r\n");
     rt_thread_mdelay(100);
-    LOG_D("software version: %s", SOFTWARE_VERSION);
+    rt_kprintf("software version: %s\r\n", SOFTWARE_VERSION);
     rt_thread_mdelay(100);
-    LOG_D("*************************************************");
+    rt_kprintf("*************************************************\r\n");
     rt_thread_mdelay(100);
     printf("\r\n");
 }
