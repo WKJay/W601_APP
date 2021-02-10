@@ -10,7 +10,7 @@
       <TargetName>rt-thread</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -54,7 +54,7 @@
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
-          <BrowseInformation>1</BrowseInformation>
+          <BrowseInformation>0</BrowseInformation>
           <ListingPath>.\build\keil\List\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
@@ -339,7 +339,7 @@
               <MiscControls>--c99 --gnu</MiscControls>
               <Define>RT_USING_ARM_LIBC, WM_W600</Define>
               <Undefine></Undefine>
-              <IncludePath>.;rt-thread\include;.;applications;drivers;ports\sensor;libraries\WM_Libraries;libraries\WM_Libraries\Include;libraries\WM_Libraries\Include\Driver;libraries\WM_Libraries\Platform\Drivers\spi;libraries\WM_Libraries\Include\OS;libraries\WM_Libraries\Include\Platform;libraries\WM_Libraries\Include\OS;libraries\WM_Libraries\Include\WiFi;libraries\WM_Libraries\Platform\Inc;libraries\WM_Libraries\Platform\Common\Params;libraries\WM_Libraries\Platform\Common\crypto;libraries\WM_Libraries\Platform\Common\crypto\digest;libraries\WM_Libraries\Platform\Common\crypto\math;libraries\WM_Libraries\Platform\Common\crypto\symmetric;libraries\WM_Libraries\Platform\Boot\gcc;.;module;packages\adbd-latest\inc;packages\adbd-latest\services;packages\aht10-latest;packages\ap3216c-latest;packages\cJSON-latest;packages\EasyFlash-v3.3.0\inc;ports\easyflash;packages\fal-v0.3.0\inc;ports\fal;packages\mbedtls-v2.7.10\mbedtls\include;packages\mbedtls-v2.7.10\ports\inc;packages\netutils-v1.1.0\ntp;packages\netutils-v1.1.0\telnet;packages\smtp_client-latest\inc;packages\tinycrypt-v1.0.0\include;packages\ulog_tcp;packages\webnet-latest\inc;ports\wifi;rt-thread\libcpu\arm\common;rt-thread\libcpu\arm\cortex-m3;rt-thread\components\dfs\include;rt-thread\components\dfs\filesystems\devfs;rt-thread\components\dfs\filesystems\elmfat;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\spi;rt-thread\components\drivers\include;rt-thread\components\drivers\spi\sfud\inc;rt-thread\components\drivers\include;rt-thread\components\drivers\wlan;rt-thread\components\drivers\sensors;rt-thread\components\drivers\include;rt-thread\components\finsh;rt-thread\components\libc\compilers\armlibc;rt-thread\components\libc\compilers\common;rt-thread\components\net\lwip-2.0.2\src;rt-thread\components\net\lwip-2.0.2\src\include;rt-thread\components\net\lwip-2.0.2\src\include\ipv4;rt-thread\components\net\lwip-2.0.2\src\arch\include;rt-thread\components\net\lwip-2.0.2\src\include\netif;rt-thread\components\net\lwip_dhcpd;rt-thread\components\net\netdev\include;rt-thread\components\net\sal_socket\include;rt-thread\components\net\sal_socket\include\socket;rt-thread\components\net\sal_socket\impl;rt-thread\components\net\sal_socket\include\dfs_net;rt-thread\components\net\sal_socket\include\dfs_net\sys_select;rt-thread\components\net\sal_socket\include\socket\sys_socket;rt-thread\components\utilities\ulog</IncludePath>
+              <IncludePath>.;rt-thread\include;.;applications;drivers;ports\sensor;libraries\WM_Libraries;libraries\WM_Libraries\Include;libraries\WM_Libraries\Include\Driver;libraries\WM_Libraries\Platform\Drivers\spi;libraries\WM_Libraries\Include\OS;libraries\WM_Libraries\Include\Platform;libraries\WM_Libraries\Include\OS;libraries\WM_Libraries\Include\WiFi;libraries\WM_Libraries\Platform\Inc;libraries\WM_Libraries\Platform\Common\Params;libraries\WM_Libraries\Platform\Common\crypto;libraries\WM_Libraries\Platform\Common\crypto\digest;libraries\WM_Libraries\Platform\Common\crypto\math;libraries\WM_Libraries\Platform\Common\crypto\symmetric;libraries\WM_Libraries\Platform\Boot\gcc;module\board;module\json;module\record;module\sensors;module\smtp;module\utils;module\web;module\wifi;module\wol;packages\adbd-latest\inc;packages\adbd-latest\services;packages\aht10-latest;packages\ap3216c-latest;packages\cJSON-latest;packages\EasyFlash-v3.3.0\inc;ports\easyflash;packages\fal-v0.3.0\inc;ports\fal;packages\mbedtls-v2.7.10\mbedtls\include;packages\mbedtls-v2.7.10\ports\inc;packages\netutils-v1.1.0\ntp;packages\netutils-v1.1.0\telnet;packages\smtp_client-latest\inc;packages\tinycrypt-v1.0.0\include;packages\ulog_tcp;packages\webnet-latest\inc;ports\wifi;rt-thread\libcpu\arm\common;rt-thread\libcpu\arm\cortex-m3;rt-thread\components\dfs\include;rt-thread\components\dfs\filesystems\devfs;rt-thread\components\dfs\filesystems\elmfat;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\spi;rt-thread\components\drivers\include;rt-thread\components\drivers\spi\sfud\inc;rt-thread\components\drivers\include;rt-thread\components\drivers\wlan;rt-thread\components\drivers\sensors;rt-thread\components\drivers\include;rt-thread\components\finsh;rt-thread\components\libc\compilers\armlibc;rt-thread\components\libc\compilers\common;rt-thread\components\net\lwip-2.0.2\src;rt-thread\components\net\lwip-2.0.2\src\include;rt-thread\components\net\lwip-2.0.2\src\include\ipv4;rt-thread\components\net\lwip-2.0.2\src\arch\include;rt-thread\components\net\lwip-2.0.2\src\include\netif;rt-thread\components\net\lwip_dhcpd;rt-thread\components\net\netdev\include;rt-thread\components\net\sal_socket\include;rt-thread\components\net\sal_socket\include\socket;rt-thread\components\net\sal_socket\impl;rt-thread\components\net\sal_socket\include\dfs_net;rt-thread\components\net\sal_socket\include\dfs_net\sys_select;rt-thread\components\net\sal_socket\include\socket\sys_socket;rt-thread\components\utilities\ulog</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -373,7 +373,7 @@
             <ScatterFile>.\drivers\linker_scripts\link.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
-            <Misc>--diag_suppress=L6314 --diag_suppress=L6329</Misc>
+            <Misc> --diag_suppress=L6314 --diag_suppress=L6329</Misc>
             <LinkerInputFile></LinkerInputFile>
             <DisabledWarnings></DisabledWarnings>
           </LDads>
@@ -786,57 +786,77 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Module</GroupName>
+          <GroupName>modules</GroupName>
           <Files>
-            <File>
-              <FileName>aht10_module.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>module\aht10_module.c</FilePath>
-            </File>
-            <File>
-              <FileName>ap3216c_module.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>module\ap3216c_module.c</FilePath>
-            </File>
             <File>
               <FileName>board_module.c</FileName>
               <FileType>1</FileType>
-              <FilePath>module\board_module.c</FilePath>
+              <FilePath>module\board\board_module.c</FilePath>
             </File>
             <File>
               <FileName>json_create.c</FileName>
               <FileType>1</FileType>
-              <FilePath>module\json_create.c</FilePath>
+              <FilePath>module\json\json_create.c</FilePath>
             </File>
             <File>
               <FileName>record_module.c</FileName>
               <FileType>1</FileType>
-              <FilePath>module\record_module.c</FilePath>
+              <FilePath>module\record\record_module.c</FilePath>
+            </File>
+            <File>
+              <FileName>aht10_module.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\sensors\aht10_module.c</FilePath>
+            </File>
+            <File>
+              <FileName>ap3216c_module.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\sensors\ap3216c_module.c</FilePath>
             </File>
             <File>
               <FileName>smtp_module.c</FileName>
               <FileType>1</FileType>
-              <FilePath>module\smtp_module.c</FilePath>
+              <FilePath>module\smtp\smtp_module.c</FilePath>
+            </File>
+            <File>
+              <FileName>utils_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\utils\utils.c</FilePath>
+            </File>
+            <File>
+              <FileName>upload_page.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\web\upload_page.c</FilePath>
             </File>
             <File>
               <FileName>web_module.c</FileName>
               <FileType>1</FileType>
-              <FilePath>module\web_module.c</FilePath>
+              <FilePath>module\web\web_module.c</FilePath>
             </File>
             <File>
-              <FileName>wifi_module.c</FileName>
+              <FileName>web_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>module\wifi_module.c</FilePath>
+              <FilePath>module\web\web_utils.c</FilePath>
+            </File>
+            <File>
+              <FileName>wn_dir_upload.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\web\wn_dir_upload.c</FilePath>
             </File>
             <File>
               <FileName>wn_firm_upload.c</FileName>
               <FileType>1</FileType>
-              <FilePath>module\wn_firm_upload.c</FilePath>
+              <FilePath>module\web\wn_firm_upload.c</FilePath>
+            </File>
+            <File>
+              <FileName>wifi_module.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\wifi\wifi_module.c</FilePath>
             </File>
             <File>
               <FileName>wol.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\module\wol.c</FilePath>
+              <FilePath>module\wol\wol.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1043,7 +1063,7 @@
                   <MiscControls> --c99 --c99</MiscControls>
                   <Define> </Define>
                   <Undefine> </Undefine>
-                  <IncludePath></IncludePath>
+                  <IncludePath> </IncludePath>
                 </VariousControls>
               </Cads>
               <Aads>
@@ -1792,7 +1812,7 @@
                   <MiscControls> --c99</MiscControls>
                   <Define> </Define>
                   <Undefine> </Undefine>
-                  <IncludePath></IncludePath>
+                  <IncludePath> </IncludePath>
                 </VariousControls>
               </Cads>
               <Aads>

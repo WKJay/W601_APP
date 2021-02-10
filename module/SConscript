@@ -1,9 +1,12 @@
+import os
 from building import *
 
-cwd     = GetCurrentDir()
-src     = Glob('*.c')
-CPPPATH = [str(Dir('#')), cwd]
+objs = []
+cwd  = GetCurrentDir()
+list = os.listdir(cwd)
 
-group = DefineGroup('Module', src, depend = [''], CPPPATH = CPPPATH)
+for item in list:
+    if os.path.isfile(os.path.join(cwd, item, 'SConscript')):
+        objs = objs + SConscript(os.path.join(item, 'SConscript'))
 
-Return('group')
+Return('objs')

@@ -16,10 +16,12 @@ Modify:
 #include "json_module.h"
 #include "pin_config.h"
 #include "wol.h"
+#include "web_utils.h"
 #include <rtdevice.h>
 #include <wn_module.h>
 #include <wn_utils.h>
 extern const struct webnet_module_upload_entry upload_bin_upload;
+extern const struct webnet_module_upload_entry upload_dir_upload;
 
 #define cgi_head()                       \
     ;                                    \
@@ -157,7 +159,9 @@ void cgi_wol(struct webnet_session *session) {
  * Return:  Success: 0   Fail: -1
  */
 int web_module_init(void) {
+    web_file_init();
     webnet_upload_add(&upload_bin_upload);
+    webnet_upload_add(&upload_dir_upload);
 
     webnet_cgi_register("smtp_save", cgi_smtp_save);
     webnet_cgi_register("smtp_get_data", cgi_smtp_get_data);
