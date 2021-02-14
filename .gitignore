@@ -40,3 +40,5 @@ settings/
 cconfig.h
 Bin/
 *.scvd
+
+!/tools/**
