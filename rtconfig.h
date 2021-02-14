@@ -160,7 +160,6 @@
 /* protocol stack implement */
 
 #define SAL_USING_LWIP
-#define SAL_USING_TLS
 #define SAL_USING_POSIX
 
 /* Network interface device */
@@ -281,7 +280,6 @@
 
 #define PKG_USING_SMTP_CLIENT
 #define PKG_USING_SMTP_CLIENT_LATEST_VERSION
-#define SMTP_CLIENT_USING_TLS
 
 /* smtp_client Options */
 
@@ -289,17 +287,6 @@
 
 /* security packages */
 
-#define PKG_USING_MBEDTLS
-
-/* Select Root Certificate */
-
-#define PKG_USING_MBEDTLS_DIGICERT_ROOT_CA
-#define MBEDTLS_AES_ROM_TABLES
-#define MBEDTLS_ECP_WINDOW_SIZE 2
-#define MBEDTLS_SSL_MAX_CONTENT_LEN 3584
-#define MBEDTLS_MPI_MAX_SIZE 1024
-#define MBEDTLS_CTR_DRBG_KEYSIZE 32
-#define PKG_USING_MBEDTLS_V2710
 #define PKG_USING_TINYCRYPT
 #define PKG_USING_TINYCRYPT_V100
 #define TINY_CRYPT_MD5
