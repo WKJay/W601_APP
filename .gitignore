@@ -40,5 +40,6 @@ settings/
 cconfig.h
 Bin/
 *.scvd
+webnet
 
 !/tools/**

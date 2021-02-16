@@ -81,7 +81,7 @@ static float aht10_temp_get(void) {
     rt_mutex_release(w601.mutex.sensor_mutex);
     //组织数据
     temp_data = (int)(temp_dev_data.data.temp / 10) +
-                ((float)(temp_dev_data.data.temp % 10) / 10);
+                ((float)(temp_dev_data.data.temp % 10) / 10.0);
 
     return temp_data;
 }
@@ -99,7 +99,7 @@ static float aht10_humi_get(void) {
     rt_mutex_release(w601.mutex.sensor_mutex);
     //组织数据
     humi_data = (int)(humi_dev_data.data.humi / 10) +
-                ((float)(humi_dev_data.data.humi % 10) / 10);
+                ((float)(humi_dev_data.data.humi % 10) / 10.0);
 
     return humi_data;
 }

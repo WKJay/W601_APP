@@ -4,6 +4,7 @@
 #include "dfs_fs.h"
 #include "W601_app.h"
 #include "time.h"
+#include "mqtt_module.h"
 w601_t w601;
 
 //调试选项
@@ -99,6 +100,7 @@ void w601_app_init(void) {
     smtp_module_init();
     ap3216c_module_init();
     telnet_server();
+    mqtt_init();
 
     rt_thread_mdelay(10000);
     record_module_init();

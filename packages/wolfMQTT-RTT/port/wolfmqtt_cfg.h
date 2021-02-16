@@ -1,0 +1,7 @@
+#ifndef __WOLFMQTT_CFG_H
+#define __WOLFMQTT_CFG_H
+
+#define MAX_BUFFER_SIZE 1024
+#define MQTT_THREAD_STACK 4096
+
+#endif /* __WOLFMQTT_CFG_H */

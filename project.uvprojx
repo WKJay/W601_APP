@@ -339,7 +339,7 @@
               <MiscControls>--c99 --gnu</MiscControls>
               <Define>RT_USING_ARM_LIBC, WM_W600</Define>
               <Undefine></Undefine>
-              <IncludePath>.;rt-thread\include;.;applications;drivers;ports\sensor;libraries\WM_Libraries;libraries\WM_Libraries\Include;libraries\WM_Libraries\Include\Driver;libraries\WM_Libraries\Platform\Drivers\spi;libraries\WM_Libraries\Include\OS;libraries\WM_Libraries\Include\Platform;libraries\WM_Libraries\Include\OS;libraries\WM_Libraries\Include\WiFi;libraries\WM_Libraries\Platform\Inc;libraries\WM_Libraries\Platform\Common\Params;libraries\WM_Libraries\Platform\Common\crypto;libraries\WM_Libraries\Platform\Common\crypto\digest;libraries\WM_Libraries\Platform\Common\crypto\math;libraries\WM_Libraries\Platform\Common\crypto\symmetric;libraries\WM_Libraries\Platform\Boot\gcc;module\board;module\json;module\record;module\sensors;module\smtp;module\utils;module\web;module\wifi;module\wol;packages\adbd-latest\inc;packages\adbd-latest\services;packages\aht10-latest;packages\ap3216c-latest;packages\cJSON-latest;packages\EasyFlash-v3.3.0\inc;ports\easyflash;packages\fal-v0.3.0\inc;ports\fal;packages\netutils-v1.1.0\ntp;packages\netutils-v1.1.0\telnet;packages\smtp_client-latest\inc;packages\tinycrypt-v1.0.0\include;packages\ulog_tcp;packages\webnet-latest\inc;ports\wifi;rt-thread\libcpu\arm\common;rt-thread\libcpu\arm\cortex-m3;rt-thread\components\dfs\include;rt-thread\components\dfs\filesystems\devfs;rt-thread\components\dfs\filesystems\elmfat;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\spi;rt-thread\components\drivers\include;rt-thread\components\drivers\spi\sfud\inc;rt-thread\components\drivers\include;rt-thread\components\drivers\wlan;rt-thread\components\drivers\sensors;rt-thread\components\drivers\include;rt-thread\components\finsh;rt-thread\components\libc\compilers\armlibc;rt-thread\components\libc\compilers\common;rt-thread\components\net\lwip-2.0.2\src;rt-thread\components\net\lwip-2.0.2\src\include;rt-thread\components\net\lwip-2.0.2\src\include\ipv4;rt-thread\components\net\lwip-2.0.2\src\arch\include;rt-thread\components\net\lwip-2.0.2\src\include\netif;rt-thread\components\net\lwip_dhcpd;rt-thread\components\net\netdev\include;rt-thread\components\net\sal_socket\include;rt-thread\components\net\sal_socket\include\socket;rt-thread\components\net\sal_socket\impl;rt-thread\components\net\sal_socket\include\dfs_net;rt-thread\components\net\sal_socket\include\dfs_net\sys_select;rt-thread\components\net\sal_socket\include\socket\sys_socket;rt-thread\components\utilities\ulog</IncludePath>
+              <IncludePath>.;rt-thread\include;.;applications;drivers;ports\sensor;libraries\WM_Libraries;libraries\WM_Libraries\Include;libraries\WM_Libraries\Include\Driver;libraries\WM_Libraries\Platform\Drivers\spi;libraries\WM_Libraries\Include\OS;libraries\WM_Libraries\Include\Platform;libraries\WM_Libraries\Include\OS;libraries\WM_Libraries\Include\WiFi;libraries\WM_Libraries\Platform\Inc;libraries\WM_Libraries\Platform\Common\Params;libraries\WM_Libraries\Platform\Common\crypto;libraries\WM_Libraries\Platform\Common\crypto\digest;libraries\WM_Libraries\Platform\Common\crypto\math;libraries\WM_Libraries\Platform\Common\crypto\symmetric;libraries\WM_Libraries\Platform\Boot\gcc;module\board;module\json;module\mqtt;module\record;module\sensors;module\smtp;module\utils;module\web;module\wifi;module\wol;packages\adbd-latest\inc;packages\adbd-latest\services;packages\aht10-latest;packages\ap3216c-latest;packages\cJSON-latest;packages\EasyFlash-v3.3.0\inc;ports\easyflash;packages\fal-v0.3.0\inc;ports\fal;packages\netutils-v1.1.0\ntp;packages\netutils-v1.1.0\telnet;packages\smtp_client-latest\inc;packages\tinycrypt-v1.0.0\include;packages\ulog_tcp;packages\webnet-latest\inc;packages\wolfMQTT-RTT;packages\wolfMQTT-RTT\port;ports\wifi;rt-thread\libcpu\arm\common;rt-thread\libcpu\arm\cortex-m3;rt-thread\components\dfs\include;rt-thread\components\dfs\filesystems\devfs;rt-thread\components\dfs\filesystems\elmfat;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\include;rt-thread\components\drivers\spi;rt-thread\components\drivers\include;rt-thread\components\drivers\spi\sfud\inc;rt-thread\components\drivers\include;rt-thread\components\drivers\wlan;rt-thread\components\drivers\sensors;rt-thread\components\drivers\include;rt-thread\components\finsh;rt-thread\components\libc\compilers\armlibc;rt-thread\components\libc\compilers\common;rt-thread\components\net\lwip-2.0.2\src;rt-thread\components\net\lwip-2.0.2\src\include;rt-thread\components\net\lwip-2.0.2\src\include\ipv4;rt-thread\components\net\lwip-2.0.2\src\arch\include;rt-thread\components\net\lwip-2.0.2\src\include\netif;rt-thread\components\net\lwip_dhcpd;rt-thread\components\net\netdev\include;rt-thread\components\net\sal_socket\include;rt-thread\components\net\sal_socket\include\socket;rt-thread\components\net\sal_socket\impl;rt-thread\components\net\sal_socket\include\dfs_net;rt-thread\components\net\sal_socket\include\dfs_net\sys_select;rt-thread\components\net\sal_socket\include\socket\sys_socket;rt-thread\components\utilities\ulog</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -799,6 +799,16 @@
               <FilePath>module\json\json_create.c</FilePath>
             </File>
             <File>
+              <FileName>mqtt_json.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\mqtt\mqtt_json.c</FilePath>
+            </File>
+            <File>
+              <FileName>mqtt_module.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>module\mqtt\mqtt_module.c</FilePath>
+            </File>
+            <File>
               <FileName>record_module.c</FileName>
               <FileType>1</FileType>
               <FilePath>module\record\record_module.c</FilePath>
@@ -819,9 +829,9 @@
               <FilePath>module\smtp\smtp_module.c</FilePath>
             </File>
             <File>
-              <FileName>utils_utils.c</FileName>
+              <FileName>module_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>module\utils\utils.c</FilePath>
+              <FilePath>module\utils\module_utils.c</FilePath>
             </File>
             <File>
               <FileName>upload_page.c</FileName>
@@ -1236,6 +1246,105 @@
               <FileName>wn_module_upload.c</FileName>
               <FileType>1</FileType>
               <FilePath>packages\webnet-latest\module\wn_module_upload.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>wolfMQTT</GroupName>
+          <GroupOption>
+            <CommonProperty>
+              <UseCPPCompiler>0</UseCPPCompiler>
+              <RVCTCodeConst>0</RVCTCodeConst>
+              <RVCTZI>0</RVCTZI>
+              <RVCTOtherData>0</RVCTOtherData>
+              <ModuleSelection>0</ModuleSelection>
+              <IncludeInBuild>1</IncludeInBuild>
+              <AlwaysBuild>0</AlwaysBuild>
+              <GenerateAssemblyFile>0</GenerateAssemblyFile>
+              <AssembleAssemblyFile>0</AssembleAssemblyFile>
+              <PublicsOnly>0</PublicsOnly>
+              <StopOnExitCode>3</StopOnExitCode>
+              <CustomArgument></CustomArgument>
+              <IncludeLibraryModules></IncludeLibraryModules>
+              <ComprImg>0</ComprImg>
+            </CommonProperty>
+            <GroupArmAds>
+              <Cads>
+                <interw>2</interw>
+                <Optim>0</Optim>
+                <oTime>2</oTime>
+                <SplitLS>2</SplitLS>
+                <OneElfS>2</OneElfS>
+                <Strict>2</Strict>
+                <EnumInt>2</EnumInt>
+                <PlainCh>2</PlainCh>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <wLevel>0</wLevel>
+                <uThumb>2</uThumb>
+                <uSurpInc>2</uSurpInc>
+                <uC99>2</uC99>
+                <uGnu>2</uGnu>
+                <useXO>2</useXO>
+                <v6Lang>0</v6Lang>
+                <v6LangP>0</v6LangP>
+                <vShortEn>2</vShortEn>
+                <vShortWch>2</vShortWch>
+                <v6Lto>2</v6Lto>
+                <v6WtE>2</v6WtE>
+                <v6Rtti>2</v6Rtti>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define> </Define>
+                  <Undefine> </Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Cads>
+              <Aads>
+                <interw>2</interw>
+                <Ropi>2</Ropi>
+                <Rwpi>2</Rwpi>
+                <thumb>2</thumb>
+                <SplitLS>2</SplitLS>
+                <SwStkChk>2</SwStkChk>
+                <NoWarn>2</NoWarn>
+                <uSurpInc>2</uSurpInc>
+                <useXO>2</useXO>
+                <ClangAsOpt>0</ClangAsOpt>
+                <VariousControls>
+                  <MiscControls></MiscControls>
+                  <Define></Define>
+                  <Undefine></Undefine>
+                  <IncludePath></IncludePath>
+                </VariousControls>
+              </Aads>
+            </GroupArmAds>
+          </GroupOption>
+          <Files>
+            <File>
+              <FileName>mqtt_client.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\wolfMQTT-RTT\src\mqtt_client.c</FilePath>
+            </File>
+            <File>
+              <FileName>mqtt_packet.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\wolfMQTT-RTT\src\mqtt_packet.c</FilePath>
+            </File>
+            <File>
+              <FileName>mqtt_socket.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\wolfMQTT-RTT\src\mqtt_socket.c</FilePath>
+            </File>
+            <File>
+              <FileName>mqtt_net_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\wolfMQTT-RTT\port\mqtt_net_port.c</FilePath>
+            </File>
+            <File>
+              <FileName>wolfmqtt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>packages\wolfMQTT-RTT\port\wolfmqtt.c</FilePath>
             </File>
           </Files>
         </Group>

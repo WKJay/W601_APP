@@ -14,10 +14,10 @@ rt_device_t als_dev;
 struct rt_sensor_data als_dev_data;
 
 /**
- * Name:    aht10_humi_get
- * Brief:   aht10模块湿度获取
+ * Name:    ap3216c_als_get
+ * Brief:   ap3216c
  * Input:   None
- * Return:  当前读取的湿度
+ * Return:  
  */
 static float ap3216c_als_get(void)
 {
@@ -26,7 +26,7 @@ static float ap3216c_als_get(void)
     rt_device_read(als_dev, 0, &als_dev_data, 1);
     rt_mutex_release(w601.mutex.sensor_mutex);
     //组织数据
-    als_data = (int)(als_dev_data.data.light / 10) + ((float)(als_dev_data.data.humi % 10) / 10);
+    als_data = (int)(als_dev_data.data.light / 10) + ((float)(als_dev_data.data.humi % 10) / 10.0);
 
     return als_data;
 }
