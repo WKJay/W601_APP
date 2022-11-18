@@ -2,12 +2,12 @@
 Copyright (c) 2019
 All rights reserved.
 File name:     json_create.c
-Description:   
+Description:
 History:
 1. Version:    V1.0.0
 Date:      2020-04-25
 Author:    WKJay
-Modify:    
+Modify:
 *************************************************/
 #include <stdio.h>
 #include "W601_app.h"
@@ -20,24 +20,21 @@ Modify:
 /**
  * Name:    json_create_web_response
  * Brief:   创建一个web响应
- * Input:   
+ * Input:
  *  @code:  响应码
  *  @msg:   响应信息
  * Output:  响应体字符串
  */
-char *json_create_web_response(int code, const char *msg)
-{
+char *json_create_web_response(int code, const char *msg) {
     char *json_data = NULL;
     cJSON *root = NULL;
     root = cJSON_CreateObject();
-    if (root == NULL)
-    {
+    if (root == NULL) {
         LOG_E("create web response json object error!");
         return 0;
     }
 
-    if (msg == NULL)
-    {
+    if (msg == NULL) {
         msg = " ";
     }
 
@@ -45,8 +42,7 @@ char *json_create_web_response(int code, const char *msg)
     cJSON_AddItemToObject(root, "msg", cJSON_CreateString(msg));
 
     json_data = cJSON_PrintUnformatted(root);
-    if (root)
-    {
+    if (root) {
         cJSON_Delete(root);
     }
 
@@ -54,25 +50,23 @@ char *json_create_web_response(int code, const char *msg)
 }
 
 /**
-* Name:    json_create_info
-* Brief:   基本信息json字符串
-* Input:   
-* Return:  Success: 0   Fail: -1
-*/
-char *json_create_info(void)
-{
+ * Name:    json_create_info
+ * Brief:   基本信息json字符串
+ * Input:
+ * Return:  Success: 0   Fail: -1
+ */
+char *json_create_info(void) {
     char *json_data = NULL;
     cJSON *root = NULL;
     root = cJSON_CreateObject();
     char data_str[10];
     uint32_t used_mem, max_mem, total_mem;
 
-    if (root == NULL)
-    {
+    if (root == NULL) {
         LOG_E("create web response json object error!");
         return 0;
     }
-    
+
     rt_memory_info(&total_mem, &used_mem, &max_mem);
     cJSON_AddItemToObject(root, "used_mem", cJSON_CreateNumber(used_mem));
     snprintf(data_str, sizeof(data_str), "%.2f", w601.aht10_data.cur_humi);
@@ -84,10 +78,36 @@ char *json_create_info(void)
     cJSON_AddItemToObject(root, "ts", cJSON_CreateNumber((unsigned int)time(NULL)));
 
     json_data = cJSON_PrintUnformatted(root);
-    if (root)
-    {
+    if (root) {
         cJSON_Delete(root);
     }
+
+    return json_data;
+}
+
+char * json_create_handshake(void) {
+    char *json_data = NULL;
+    cJSON *root = cJSON_CreateObject();
+    cJSON *handshake = cJSON_CreateObject();
+
+    if (root == NULL) {
+        LOG_E("create handshake json object error!");
+        return NULL;
+    }
+
+    cJSON_AddItemToObject(root, "code", cJSON_CreateNumber(0));
+    cJSON_AddItemToObject(root, "handshake", handshake);
+
+    cJSON_AddItemToObject(handshake, "version", cJSON_CreateString(SOFTWARE_VERSION));
+    cJSON_AddItemToObject(handshake, "support_firmwareupload", cJSON_CreateBool(1));
+    cJSON_AddItemToObject(handshake, "support_fileupload", cJSON_CreateBool(0));
+    cJSON_AddItemToObject(handshake, "support_directoryupload", cJSON_CreateBool(1));
+    cJSON_AddItemToObject(handshake, "support_diskclean", cJSON_CreateBool(0));
+    cJSON_AddItemToObject(handshake, "support_diskfree", cJSON_CreateBool(0));
+    cJSON_AddItemToObject(handshake, "support_filecheck", cJSON_CreateBool(0));
+
+    json_data = cJSON_PrintUnformatted(root);
+    if (root) cJSON_Delete(root);
 
     return json_data;
 }

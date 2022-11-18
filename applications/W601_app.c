@@ -5,6 +5,7 @@
 #include "W601_app.h"
 #include "time.h"
 #include "mqtt_module.h"
+#include "system.h"
 w601_t w601;
 
 //调试选项
@@ -83,6 +84,7 @@ static void log_software_version(void) {
  * Return:  None
  */
 void w601_app_init(void) {
+    system_monitor_create();
     log_software_version();
     w601_filesystem_init();
     easyflash_init();

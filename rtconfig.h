@@ -257,8 +257,7 @@
 #define WEBNET_USING_GZIP
 #define WEBNET_CACHE_LEVEL 1
 #define PKG_USING_WEBNET_LATEST_VERSION
-#define PKG_USING_CJSON
-#define PKG_USING_CJSON_LATEST_VERSION
+#define PKG_WEBNET_VER_NUM 0x99999
 
 /* Wi-Fi */
 
@@ -275,6 +274,7 @@
 #define NETUTILS_NTP_HOSTNAME3 "edu.ntp.org.cn"
 #define PKG_NETUTILS_TELNET
 #define PKG_USING_NETUTILS_V110
+#define PKG_NETUTILS_VER_NUM 0x10100
 
 /* IoT Cloud */
 
@@ -284,6 +284,8 @@
 /* smtp_client Options */
 
 #define SMTP_CLIENT_USING_ATTACHMENT
+#define PKG_USING_WOL
+#define PKG_USING_WOL_V100
 
 /* security packages */
 
@@ -298,8 +300,23 @@
 
 /* language packages */
 
+/* JSON: JavaScript Object Notation, a lightweight data-interchange format */
+
+#define PKG_USING_CJSON
+#define PKG_USING_CJSON_LATEST_VERSION
+
+/* XML: Extensible Markup Language */
+
 
 /* multimedia packages */
+
+/* LVGL: powerful and easy-to-use embedded GUI library */
+
+
+/* u8g2: a monochrome graphic library */
+
+
+/* PainterEngine: A cross-platform graphics application framework written in C language */
 
 
 /* tools packages */
@@ -328,6 +345,17 @@
 
 /* system packages */
 
+/* enhanced kernel services */
+
+
+/* acceleration: Assembly language or algorithmic acceleration packages */
+
+
+/* CMSIS: ARM Cortex-M Microcontroller Software Interface Standard */
+
+
+/* Micrium: Micrium software products porting for RT-Thread */
+
 #define PKG_USING_FAL
 #define FAL_DEBUG_CONFIG
 #define FAL_DEBUG 1
@@ -336,25 +364,69 @@
 #define PKG_USING_FAL_V00300
 #define PKG_FAL_VER_NUM 0x00300
 
-/* Micrium: Micrium software products porting for RT-Thread */
-
-
 /* peripheral libraries and drivers */
 
-#define PKG_USING_SENSORS_DRIVERS
+/* sensors drivers */
+
 #define PKG_USING_AHT10
 #define PKG_USING_AHT10_LATEST_VERSION
 #define PKG_USING_AP3216C
 #define PKG_USING_AP3216C_LATEST_VERSION
 
+/* touch drivers */
+
+
+/* Kendryte SDK */
+
+
+/* AI packages */
+
+
+/* Signal Processing and Control Algorithm Packages */
+
+
 /* miscellaneous packages */
 
+/* project laboratory */
 
 /* samples: kernel and components samples */
 
 
-/* games: games run on RT-Thread console */
+/* entertainment: terminal games and other interesting software packages */
 
+
+/* Arduino libraries */
+
+
+/* Projects */
+
+
+/* Sensors */
+
+
+/* Display */
+
+
+/* Timing */
+
+
+/* Data Processing */
+
+
+/* Data Storage */
+
+/* Communication */
+
+
+/* Device Control */
+
+
+/* Other */
+
+/* Signal IO */
+
+
+/* Uncategorized */
 
 /* W60x Device config */
 

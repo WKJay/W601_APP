@@ -15,7 +15,7 @@ Modify:
 #include "board_module.h"
 #include "json_module.h"
 #include "pin_config.h"
-#include "wol.h"
+#include "wol_app.h"
 #include "web_utils.h"
 #include <rtdevice.h>
 #include <wn_module.h>
@@ -125,8 +125,8 @@ void cgi_smtp_save(struct webnet_session *session) {
     const char *password = webnet_request_get_query(request, "password");
     const char *receiver = webnet_request_get_query(request, "receiver");
     const char *temp_warn = webnet_request_get_query(request, "temp_warn");
-    smtp_data_config((char *)server_addr, (char *)server_port, (char *)username,
-                     (char *)password, (char *)receiver, (char *)temp_warn);
+    smtp_data_config((char *)server_addr, (char *)server_port, (char *)username, (char *)password,
+                     (char *)receiver, (char *)temp_warn);
     smtp_enable();
     webnet_session_printf(session, response);
 }
@@ -144,12 +144,20 @@ void cgi_wol(struct webnet_session *session) {
     char *success = "{\"code\":0}";
     char *error = "{\"code\":-1}";
     const char *value = webnet_request_get_query(request, "value");
-    if (wol_process(value) == 0) {
+    if (wol_process((char *)value) == 0) {
         body = success;
     } else {
         body = error;
     }
     webnet_session_printf(session, body);
+}
+
+void cgi_handshake(struct webnet_session *session) {
+    cgi_head();
+    request = request;  //消除警告
+    body = json_create_handshake();
+    webnet_session_printf(session, body);
+    if (body) rt_free(body);
 }
 
 /**
@@ -162,6 +170,8 @@ int web_module_init(void) {
     web_file_init();
     webnet_upload_add(&upload_bin_upload);
     webnet_upload_add(&upload_dir_upload);
+
+    webnet_cgi_register("handshake", cgi_handshake);
 
     webnet_cgi_register("smtp_save", cgi_smtp_save);
     webnet_cgi_register("smtp_get_data", cgi_smtp_get_data);
